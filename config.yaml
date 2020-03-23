@@ -1,0 +1,28 @@
+env: "development"
+feature_toggle:
+  indonesia: true
+  jakarta: true
+  jatim: true
+  jabar: true
+  jateng: true
+tableau:
+  workbooks:
+    - "DashboardCovid-19Jakarta_15837354399300"
+    - "PetaPersebaranTes"
+  dashboards:
+    - "Dashboard22"
+    - "Dashboard2"
+url:
+  jabar_core_data: "https://coredata.jabarprov.go.id/analytics/covid19/aggregation.json"
+  jatim_draxi_data: "http://covid19dev.jatimprov.go.id/xweb/draxi"
+  jateng_web: "https://corona.jatengprov.go.id/"
+api:
+  port: 8080
+  host: "localhost"
+redis:
+  port: 6379
+  host: "localhost"
+  password: ""
+  db: 0
+log:
+  level: "debug"

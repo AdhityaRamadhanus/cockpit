@@ -1,0 +1,98 @@
+# github.com/AdhityaRamadhanus/userland v0.0.0-20200101092557-8717a1f043ab
+github.com/AdhityaRamadhanus/userland/pkg/common/security
+github.com/AdhityaRamadhanus/userland
+# github.com/NYTimes/gziphandler v1.1.1
+github.com/NYTimes/gziphandler
+# github.com/PuerkitoBio/goquery v1.5.1
+github.com/PuerkitoBio/goquery
+# github.com/andybalholm/cascadia v1.1.0
+github.com/andybalholm/cascadia
+# github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a
+github.com/asaskevich/govalidator
+# github.com/avast/retry-go v2.6.0+incompatible
+github.com/avast/retry-go
+# github.com/beorn7/perks v1.0.0
+github.com/beorn7/perks/quantile
+# github.com/davecgh/go-spew v1.1.1
+github.com/davecgh/go-spew/spew
+# github.com/dgrijalva/jwt-go v3.2.0+incompatible
+github.com/dgrijalva/jwt-go
+# github.com/go-errors/errors v1.0.1
+github.com/go-errors/errors
+# github.com/go-kit/kit v0.8.0
+github.com/go-kit/kit/metrics
+github.com/go-kit/kit/metrics/prometheus
+github.com/go-kit/kit/metrics/internal/lv
+# github.com/go-redis/redis v6.15.7+incompatible
+github.com/go-redis/redis
+github.com/go-redis/redis/internal
+github.com/go-redis/redis/internal/consistenthash
+github.com/go-redis/redis/internal/hashtag
+github.com/go-redis/redis/internal/pool
+github.com/go-redis/redis/internal/proto
+github.com/go-redis/redis/internal/util
+# github.com/golang/protobuf v1.3.2
+github.com/golang/protobuf/proto
+# github.com/gorilla/mux v1.7.3
+github.com/gorilla/mux
+# github.com/joho/godotenv v1.3.0
+github.com/joho/godotenv
+# github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
+github.com/justinas/alice
+# github.com/kelseyhightower/envconfig v1.4.0
+github.com/kelseyhightower/envconfig
+# github.com/konsorten/go-windows-terminal-sequences v1.0.1
+github.com/konsorten/go-windows-terminal-sequences
+# github.com/lib/pq v1.2.0
+github.com/lib/pq
+github.com/lib/pq/oid
+github.com/lib/pq/scram
+# github.com/matttproud/golang_protobuf_extensions v1.0.1
+github.com/matttproud/golang_protobuf_extensions/pbutil
+# github.com/pkg/errors v0.9.1
+github.com/pkg/errors
+# github.com/pmezard/go-difflib v1.0.0
+github.com/pmezard/go-difflib/difflib
+# github.com/prometheus/client_golang v0.9.3
+github.com/prometheus/client_golang/prometheus
+github.com/prometheus/client_golang/prometheus/promhttp
+github.com/prometheus/client_golang/prometheus/internal
+# github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90
+github.com/prometheus/client_model/go
+# github.com/prometheus/common v0.4.0
+github.com/prometheus/common/expfmt
+github.com/prometheus/common/model
+github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+# github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084
+github.com/prometheus/procfs
+github.com/prometheus/procfs/internal/fs
+# github.com/rs/cors v1.7.0
+github.com/rs/cors
+# github.com/satori/go.uuid v1.2.0
+github.com/satori/go.uuid
+# github.com/sirupsen/logrus v1.4.2
+github.com/sirupsen/logrus
+# github.com/stretchr/testify v1.4.0
+github.com/stretchr/testify/suite
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/require
+# github.com/tidwall/gjson v1.6.0
+github.com/tidwall/gjson
+# github.com/tidwall/match v1.0.1
+github.com/tidwall/match
+# github.com/tidwall/pretty v1.0.0
+github.com/tidwall/pretty
+# go.uber.org/atomic v1.4.0
+go.uber.org/atomic
+# go.uber.org/multierr v1.1.0
+go.uber.org/multierr
+# golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+# golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# golang.org/x/sys v0.0.0-20190507160741-ecd444e8653b
+golang.org/x/sys/unix
+# gopkg.in/yaml.v2 v2.2.2
+gopkg.in/yaml.v2
