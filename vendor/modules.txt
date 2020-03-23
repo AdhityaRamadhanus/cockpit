@@ -35,6 +35,8 @@ github.com/go-redis/redis/internal/util
 github.com/golang/protobuf/proto
 # github.com/gorilla/mux v1.7.3
 github.com/gorilla/mux
+# github.com/jasonlvhit/gocron v0.0.0-20200321025513-cc4d0001ad5e
+github.com/jasonlvhit/gocron
 # github.com/joho/godotenv v1.3.0
 github.com/joho/godotenv
 # github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
@@ -89,7 +91,7 @@ go.uber.org/multierr
 # golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
-# golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+# golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
 golang.org/x/net/html
 golang.org/x/net/html/atom
 # golang.org/x/sys v0.0.0-20190507160741-ecd444e8653b
