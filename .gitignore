@@ -20,6 +20,3 @@ configmap
 secret
 deploy/gcp/*
 deploy/**/*.yaml
-
-api
-cron
