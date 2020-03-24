@@ -28,6 +28,7 @@ type URLConfig struct {
 	JabarCoreData  string `yaml:"jabar_core_data"`
 	JatimDraxiData string `yaml:"jatim_draxi_data"`
 	JatengWeb      string `yaml:"jateng_web"`
+	BantenWeb      string `yaml:"banten_web"`
 }
 
 type FeatureToggleConfig struct {
@@ -37,6 +38,7 @@ type FeatureToggleConfig struct {
 	Jateng    bool `yaml:"jateng" envconfig:"FEATURE_TOGGLE_JATENG"`
 	Jatim     bool `yaml:"jatim" envconfig:"FEATURE_TOGGLE_JATIM"`
 	Jogja     bool `yaml:"jogja" envconfig:"FEATURE_TOGGLE_JOGJA"`
+	Banten    bool `yaml:"banten" envconfig:"FEATURE_TOGGLE_BANTEN"`
 }
 
 type TableauConfig struct {

@@ -6,6 +6,7 @@ feature_toggle:
   jabar: true
   jogja: true
   jateng: true
+  banten: true
 tableau:
   workbooks:
     - "DashboardCovid-19Jakarta_15837354399300"
@@ -14,6 +15,7 @@ tableau:
     - "Dashboard22"
     - "Dashboard2"
 url:
+  banten_web: "https://infocorona.bantenprov.go.id/"
   jabar_core_data: "https://coredata.jabarprov.go.id/analytics/covid19/aggregation.json"
   jatim_draxi_data: "http://covid19dev.jatimprov.go.id/xweb/draxi"
   jateng_web: "https://corona.jatengprov.go.id/"
