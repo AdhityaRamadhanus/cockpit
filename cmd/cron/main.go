@@ -83,6 +83,12 @@ func task() {
 		FeatureToggle:   cfg.FeatureToggle,
 	}
 
+	taskBanten := tasks.TaskBanten{
+		KeyValueService: keyValueSvc,
+		URL:             cfg.URL,
+		FeatureToggle:   cfg.FeatureToggle,
+	}
+
 	taskIndonesia := tasks.TaskIndonesia{
 		KeyValueService: keyValueSvc,
 		Tableau:         cfg.Tableau,
@@ -95,6 +101,7 @@ func task() {
 	taskJakarta.SaveJakartaProvincialLevelData()
 	taskIndonesia.SaveIndonesiaNationalLevelData()
 	taskJogja.SaveJogjaProvincialLevelData()
+	taskBanten.SaveBantenProvincialLevelData()
 }
 
 func main() {
