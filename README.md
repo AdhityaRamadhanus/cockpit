@@ -20,6 +20,7 @@ Endpoints
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-barat
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-tengah
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-timur
+- http://35.247.144.130/api/countries/indonesia/provinces/di-jogjakarta
 
 Sources
 -------
@@ -28,10 +29,10 @@ Sources
 - https://corona.jatengprov.go.id/
 - https://public.tableau.com/views/DashboardCovid-19Jakarta_15837354399300/Dashboard22?%3Aembed=y&%3AshowVizHome=no&%3Adisplay_count=y&%3Adisplay_static_image=y&%3AbootstrapWhenNotified=true
 - https://public.tableau.com/views/PetaPersebaranTes/Dashboard2?%3Aembed=y&%3AshowVizHome=no&%3Adisplay_count=y&%3Adisplay_static_image=y&%3AbootstrapWhenNotified=true
+- https://corona.jogjaprov.go.id/data-statistik
 
 Todos
 -----
-- https://corona.jogjaprov.go.id/data-statistik
 - https://infocorona.bantenprov.go.id/home
 - city level cases data
 - timestamp on each data
