@@ -1,0 +1,28 @@
+name: Cockpit Integration Test
+
+on:
+  pull_request:
+    branches:
+      - "master"
+  push:
+    branches:
+      - "master"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:alpine
+        ports: ["6379:6379"]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Go for use with actions
+        uses: actions/setup-go@v1.0.0
+        with:
+          # The Go version to download (if necessary) and use. Example: 1.9.3
+          version: 1.12.9
+      - run: "cp .env.sample .env && make integration-test"
