@@ -4,6 +4,7 @@ feature_toggle:
   jakarta: true
   jatim: true
   jabar: true
+  jogja: true
   jateng: true
 tableau:
   workbooks:
