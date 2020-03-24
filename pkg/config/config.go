@@ -31,11 +31,12 @@ type URLConfig struct {
 }
 
 type FeatureToggleConfig struct {
-	Indonesia bool `yaml:"indonesia"`
-	Jakarta   bool `yaml:"jakarta"`
-	Jabar     bool `yaml:"jabar"`
-	Jateng    bool `yaml:"jateng"`
-	Jatim     bool `yaml:"jatim"`
+	Indonesia bool `yaml:"indonesia" envconfig:"FEATURE_TOGGLE_INDONESIA"`
+	Jakarta   bool `yaml:"jakarta" envconfig:"FEATURE_TOGGLE_JAKARTA"`
+	Jabar     bool `yaml:"jabar" envconfig:"FEATURE_TOGGLE_JABAR"`
+	Jateng    bool `yaml:"jateng" envconfig:"FEATURE_TOGGLE_JATENG"`
+	Jatim     bool `yaml:"jatim" envconfig:"FEATURE_TOGGLE_JATIM"`
+	Jogja     bool `yaml:"jogja" envconfig:"FEATURE_TOGGLE_JOGJA"`
 }
 
 type TableauConfig struct {

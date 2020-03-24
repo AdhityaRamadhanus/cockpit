@@ -2,6 +2,7 @@ package tableau
 
 import (
 	"encoding/json"
+	"reflect"
 	"regexp"
 
 	"github.com/AdhityaRamadhanus/cockpit"
@@ -74,6 +75,74 @@ func ExtractJakartaInfectedDetails(rawSheet string) (interface{}, error) {
 	}
 
 	return infectedDetails, nil
+}
+
+func ExtractJogjaProvincialLevelCases(rawSheet string) (interface{}, error) {
+	jsonStr, err := transformRawSheetToJSONStr(rawSheet)
+	if err != nil {
+		return -1, err
+	}
+
+	jsonPath := "secondaryInfo.presModelMap.dataDictionary.presModelHolder.genDataDictionaryPresModel.dataSegments.0.dataColumns"
+	result := gjson.Get(jsonStr["secondary"], jsonPath)
+
+	dataColumns := result.Array()
+
+	dataLabelsReferences := []string{
+		"Proses",
+		"Meninggal",
+		"Dirawat",
+		"Sembuh",
+		"ODP",
+		"PDP",
+		"Positif",
+	}
+	dataLabels := []string{}
+	dataValues := []int{}
+
+	for _, dataColumn := range dataColumns {
+		dataType := dataColumn.Map()["dataType"].String()
+		values := dataColumn.Map()["dataValues"].Array()
+		if dataType == "cstring" {
+			for _, value := range values {
+				dataLabels = append(dataLabels, value.String())
+			}
+		}
+
+		if dataType == "integer" {
+			for _, value := range values {
+				dataValues = append(dataValues, int(value.Int()))
+			}
+		}
+	}
+
+	if len(dataValues) != 5 {
+		return nil, errors.Errorf("Data values length is not 5 : %v", dataValues)
+	}
+
+	if !reflect.DeepEqual(dataLabels, dataLabelsReferences) {
+		return nil, errors.Errorf("Data labels references different with data labels : %v", dataLabels)
+	}
+
+	provincialLevelCases := cockpit.ProvincialLevelCases{
+		MonitoringCases: cockpit.MonitoringDetails{
+			Total:    dataValues[0],
+			Finished: -1,
+			Ongoing:  -1,
+		},
+		SurveillanceCases: cockpit.SurveillanceDetails{
+			Total:    dataValues[1] + dataValues[2],
+			Finished: -1,
+			Ongoing:  dataValues[2],
+		},
+		InfectedCases: cockpit.InfectedDetails{
+			Total:     dataValues[3] + dataValues[4],
+			Died:      -1,
+			Recovered: dataValues[3],
+		},
+	}
+
+	return provincialLevelCases, nil
 }
 
 // func ExtractMappingPerKotaSheet(rawSheet string) (interface{}, error) {
