@@ -5,6 +5,7 @@ Observing COVID-19 outbreak in Indonesia through Cockpit
   <a href="notes">Notes | </a>
   <a href="#endpoints">Endpoints |</a>
   <a href="#Sources">Sources |</a>
+  <a href="#Todos">Todos |</a>
   <a href="#licenses">License</a>
   <br><br>
   <blockquote>
@@ -28,6 +29,12 @@ Sources
 - https://public.tableau.com/views/DashboardCovid-19Jakarta_15837354399300/Dashboard22?%3Aembed=y&%3AshowVizHome=no&%3Adisplay_count=y&%3Adisplay_static_image=y&%3AbootstrapWhenNotified=true
 - https://public.tableau.com/views/PetaPersebaranTes/Dashboard2?%3Aembed=y&%3AshowVizHome=no&%3Adisplay_count=y&%3Adisplay_static_image=y&%3AbootstrapWhenNotified=true
 
+Todos
+-----
+- https://corona.jogjaprov.go.id/data-statistik
+- https://infocorona.bantenprov.go.id/home
+- city level cases data
+- timestamp on each data
 
 License
 ----
