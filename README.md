@@ -15,13 +15,19 @@ Observing COVID-19 outbreak in Indonesia through Cockpit
 
 Endpoints
 ---------
+1. National Level
 - http://35.247.144.130/api/countries/indonesia
+
+2. Provincial Level
 - http://35.247.144.130/api/countries/indonesia/provinces/dki-jakarta
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-barat
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-tengah
 - http://35.247.144.130/api/countries/indonesia/provinces/jawa-timur
 - http://35.247.144.130/api/countries/indonesia/provinces/di-jogjakarta
 - http://35.247.144.130/api/countries/indonesia/provinces/banten
+
+3. City Level
+- http://35.247.144.130/api/countries/indonesia/provinces/jawa-timur/cities
 
 Sources
 -------
