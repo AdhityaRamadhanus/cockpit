@@ -37,7 +37,8 @@ jobs:
         with:
           version: "270.0.0"
           service_account_email: ${{ secrets.SA_EMAIL }}
-          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          service_account_key: ${{ secrets.SA_KEY }}
+          export_default_credentials: true
 
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
