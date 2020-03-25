@@ -57,7 +57,7 @@ func (c KeyValueService) GetHashAll(key string) (map[string]string, error) {
 
 func (c KeyValueService) SetHashAll(key string, value map[string]interface{}) error {
 	if err := c.redisClient.HMSet(key, value).Err(); err != nil {
-		return errors.Wrapf(err, "redisClient.HMSet(key, value) err", key)
+		return errors.Wrapf(err, "redisClient.HMSet(%q, value) err", key)
 	}
 
 	return nil
