@@ -15,7 +15,7 @@ type RetryClient struct {
 func NewDefaultRetryClient() *RetryClient {
 	return &RetryClient{
 		Attempts: 5,
-		Timeout:  10 * time.Second,
+		Timeout:  15 * time.Second,
 	}
 }
 
