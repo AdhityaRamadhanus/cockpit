@@ -1,5 +1,30 @@
 version: "3"
 services:
+  api:
+    container_name: covid-api
+    labels:
+      project: "covid-api"
+    build:
+      context: "."
+      dockerfile: "./deploy/api/Dockerfile"
+    ports:
+      - "80:8000"
+    environment:
+      - "REDIS_HOST=covid-redis"
+      - "API_HOST=0.0.0.0"
+    depends_on:
+      - "redis"
+  cron:
+    container_name: covid-cron
+    labels:
+      project: "covid-cron"
+    build:
+      context: "."
+      dockerfile: "./deploy/cron/Dockerfile"
+    environment:
+      - "REDIS_HOST=covid-redis"
+    depends_on:
+      - "redis"
   redis:
     container_name: covid-redis
     image: redis:alpine
