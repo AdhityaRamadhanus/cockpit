@@ -39,21 +39,6 @@ jobs:
           service_account_email: ${{ secrets.SA_EMAIL }}
           service_account_key: ${{ secrets.SA_KEY }}
           export_default_credentials: true
-
-      # Configure docker to use the gcloud command-line tool as a credential helper
-      - run: |
-          gcloud auth configure-docker
-      # Build the Docker image
-      - name: Build
-        run: |
-          docker build -t gcr.io/$GCE_PROJECT/covid-api:$GITHUB_SHA \
-            -f deploy/api/Dockerfile \
-            --build-arg GITHUB_SHA="$GITHUB_SHA" \
-            --build-arg GITHUB_REF="$GITHUB_REF" .
-      # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |
-          docker push gcr.io/$GCE_PROJECT/covid-api:$GITHUB_SHA
       - name: Deploy
         run: |
-          gcloud compute ssh --command="cat ~/cockpit/Makefile"
+          gcloud compute ssh $GCE_INSTANCE --command="cat ~/cockpit/Makefile"
