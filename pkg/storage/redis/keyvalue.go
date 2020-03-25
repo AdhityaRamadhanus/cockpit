@@ -42,6 +42,27 @@ func (c KeyValueService) Set(key string, value []byte) (err error) {
 	return nil
 }
 
+func (c KeyValueService) GetHashAll(key string) (map[string]string, error) {
+	hash, err := c.redisClient.HGetAll(key).Result()
+
+	if err != nil {
+		if err == redis.Nil {
+			return nil, cockpit.ErrKeyNotFound
+		}
+		return nil, errors.Wrapf(err, "redisClient.HGetAll(%q).Result() err", key)
+	}
+
+	return hash, nil
+}
+
+func (c KeyValueService) SetHashAll(key string, value map[string]interface{}) error {
+	if err := c.redisClient.HMSet(key, value).Err(); err != nil {
+		return errors.Wrapf(err, "redisClient.HMSet(%q, value) err", key)
+	}
+
+	return nil
+}
+
 //Delete cache in bytes with key without expiration
 func (c KeyValueService) Delete(key string) (err error) {
 	if err := c.redisClient.Del(key).Err(); err != nil {

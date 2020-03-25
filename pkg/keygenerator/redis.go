@@ -9,3 +9,7 @@ func NationalLevelRedisKey() string {
 func ProvincialLevelRedisKey(province string) string {
 	return fmt.Sprintf("%s:provincial-level", province)
 }
+
+func CityLevelRedisKey(province string) string {
+	return fmt.Sprintf("%s:city-level", province)
+}

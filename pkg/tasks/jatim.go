@@ -9,6 +9,7 @@ import (
 	extractor "github.com/AdhityaRamadhanus/cockpit/pkg/extractors/html"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/http"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/keygenerator"
+	mystrings "github.com/AdhityaRamadhanus/cockpit/pkg/strings"
 	"github.com/sirupsen/logrus"
 )
 
@@ -18,7 +19,7 @@ type TaskJatim struct {
 	FeatureToggle   config.FeatureToggleConfig
 }
 
-func (t TaskJatim) SaveJatimProvincialLevelData() {
+func (t TaskJatim) SaveJatimData() {
 	defer func() {
 		if err := recover(); err != nil {
 			logrus.WithError(err.(error)).Errorf("Panic error %s", debug.Stack())
@@ -54,5 +55,29 @@ func (t TaskJatim) SaveJatimProvincialLevelData() {
 		logTaskError("task-jatim", err)
 		return
 	}
+
+	cityLevelCases, err := extractor.ExtractAllCityLevelCasesJatim(htmlText)
+	if err != nil {
+		logTaskError("task-jatim", err)
+		return
+	}
+
+	cityLevelCasesMap := map[string]interface{}{}
+	for _, cityLevelCase := range cityLevelCases.([]cockpit.CityLevelCases) {
+		jsonData, err := json.Marshal(cityLevelCase)
+		if err != nil {
+			logTaskError("task-jatim", err)
+			return
+		}
+
+		cityLevelCasesMap[mystrings.Slugify(cityLevelCase.Name)] = jsonData
+	}
+
+	cityLevelKey := keygenerator.CityLevelRedisKey("jawa-timur")
+	if err := t.KeyValueService.SetHashAll(cityLevelKey, cityLevelCasesMap); err != nil {
+		logTaskError("task-jatim", err)
+		return
+	}
+
 	logrus.Info("Finished SaveJatimProvincialLevelData() Task")
 }

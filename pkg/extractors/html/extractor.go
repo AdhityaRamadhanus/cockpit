@@ -5,12 +5,65 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/AdhityaRamadhanus/cockpit"
+	mystrings "github.com/AdhityaRamadhanus/cockpit/pkg/strings"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
 	"go.uber.org/multierr"
 )
+
+func ExtractAllCityLevelCasesJatim(htmlText string) (interface{}, error) {
+	// Load the HTML document
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlText))
+	if err != nil {
+		return nil, errors.Wrapf(err, "goquery.NewDocumentFromReader() err;")
+	}
+
+	selector := "table tbody tr"
+
+	cityLevelCases := []cockpit.CityLevelCases{}
+
+	dataRowStrs := [][]string{}
+	// Find the review items
+	doc.Find(selector).Each(func(i int, s *goquery.Selection) {
+		dataRowStrs = append(dataRowStrs, s.Find("td").Map(func(j int, si *goquery.Selection) string {
+			return si.Text()
+		}))
+	})
+
+	if len(dataRowStrs) == 0 {
+		return nil, errors.Errorf("Couldn't match element matching selector %q", selector)
+	}
+
+	for _, dataRowStr := range dataRowStrs {
+		if len(dataRowStr) < 4 {
+			return nil, errors.Errorf("Data row contains column less than 4, dataRowStr: %v", dataRowStr)
+		}
+
+		odp, errODP := strconv.Atoi(dataRowStr[1])
+		pdp, errPDP := strconv.Atoi(dataRowStr[2])
+		positif, errPositif := strconv.Atoi(dataRowStr[3])
+		lastUpdatedAt, _ := time.Parse("2006-01-02 15:04:05", dataRowStr[4])
+
+		if err := multierr.Combine(errODP, errPDP, errPositif); err != nil {
+			return nil, errors.Wrapf(err, "Failed to parse data row columns, dataRowStr: %v", dataRowStr)
+		}
+
+		cityName := strings.Replace(strings.ToLower(dataRowStr[0]), "kab.", "kabupaten", -1)
+		cityLevelCases = append(cityLevelCases, cockpit.CityLevelCases{
+			Name:          mystrings.Capitalize(cityName),
+			TotalODP:      odp,
+			TotalPDP:      pdp,
+			TotalPositif:  positif,
+			LastUpdatedAt: lastUpdatedAt,
+			LastFetchedAt: time.Now(),
+		})
+	}
+
+	return cityLevelCases, nil
+}
 
 func ExtractProvincialLevelCasesJatim(htmlText string) (interface{}, error) {
 	// Load the HTML document

@@ -70,8 +70,11 @@ func main() {
 	provincialHandler := handlers.ProvincialHandler{
 		KeyValueService: keyValueSvc,
 	}
+	cityHandler := handlers.CityHandler{
+		KeyValueService: keyValueSvc,
+	}
 
-	server := server.NewServer(cfg.API, metricHandler, healthHandler, nationalHandler, provincialHandler)
+	server := server.NewServer(cfg.API, metricHandler, healthHandler, nationalHandler, provincialHandler, cityHandler)
 	srv := server.CreateHTTPServer()
 
 	// Handle SIGINT, SIGTERN, SIGHUP signal from OS

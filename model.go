@@ -28,6 +28,15 @@ type ProvincialLevelCases struct {
 	LastFetchedAt     time.Time           `json:"last_fetched_at"`
 }
 
+type CityLevelCases struct {
+	Name          string
+	TotalODP      int       `json:"total_odp"`
+	TotalPDP      int       `json:"total_pdp"`
+	TotalPositif  int       `json:"total_positif"`
+	LastUpdatedAt time.Time `json:"last_updated_at"`
+	LastFetchedAt time.Time `json:"last_fetched_at"`
+}
+
 type Hospital struct {
 	Latitude  float64
 	Longitude float64
