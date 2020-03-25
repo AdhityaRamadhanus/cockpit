@@ -18,10 +18,12 @@ func ExtractProvincialLevelCasesJabar(jsonData map[string]interface{}) (interfac
 	}
 
 	dataMap := map[string]interface{}{}
+	var foundDate string
 
 	for _, dateStr := range dateStrs {
 		dataRow, ok := jsonData[dateStr]
 		if ok && dataRow.(map[string]interface{})["total_odp"] != nil {
+			foundDate = dateStr
 			dataMap = dataRow.(map[string]interface{})
 			break
 		}
@@ -49,6 +51,7 @@ func ExtractProvincialLevelCasesJabar(jsonData map[string]interface{}) (interfac
 		return nil, errors.Wrapf(errs, "Failed to parse data row columns %v", dataMap)
 	}
 
+	lastUpdatedAt, _ := time.Parse("02-01-2006", foundDate)
 	provincialLevelCases := cockpit.ProvincialLevelCases{
 		MonitoringCases: cockpit.MonitoringDetails{
 			Total:    totalODP,
@@ -65,6 +68,8 @@ func ExtractProvincialLevelCasesJabar(jsonData map[string]interface{}) (interfac
 			Died:      deathCases,
 			Recovered: recoveredCases,
 		},
+		LastFetchedAt: time.Now(),
+		LastUpdatedAt: lastUpdatedAt,
 	}
 
 	return provincialLevelCases, nil
