@@ -18,7 +18,6 @@ func (h ProvincialHandler) RegisterRoutes(router *mux.Router) {
 	subRouter := router.PathPrefix("/api").Subrouter()
 
 	subRouter.HandleFunc("/countries/indonesia/provinces/{province}", h.getProvincialData).Methods("GET")
-
 }
 
 func (h ProvincialHandler) getProvincialData(res http.ResponseWriter, req *http.Request) {

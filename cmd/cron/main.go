@@ -96,7 +96,7 @@ func task() {
 	}
 
 	taskJabar.SaveJabarProvincialLevelData()
-	taskJatim.SaveJatimProvincialLevelData()
+	taskJatim.SaveJatimData()
 	taskJateng.SaveJatengProvincialLevelData()
 	taskJakarta.SaveJakartaProvincialLevelData()
 	taskIndonesia.SaveIndonesiaNationalLevelData()
