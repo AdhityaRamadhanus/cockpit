@@ -41,4 +41,4 @@ jobs:
           export_default_credentials: true
       - name: Deploy
         run: |
-          gcloud compute ssh $GCE_INSTANCE --command="cat ~/cockpit/Makefile"
+          gcloud compute ssh $GCE_INSTANCE --zone=$GCE_INSTANCE_ZONE --command="cat ~/cockpit/Makefile"
