@@ -25,7 +25,7 @@ func (t TaskJateng) SaveJatengProvincialLevelData() {
 		}
 	}()
 
-	if !t.FeatureToggle.Jakarta {
+	if !t.FeatureToggle.Jateng {
 		logrus.Info("Skipping SaveJatengProvincialLevelData() Task")
 		return
 	}

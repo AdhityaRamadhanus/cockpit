@@ -4,13 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"runtime/debug"
+	"time"
 
 	"github.com/AdhityaRamadhanus/cockpit"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/config"
 	extractor "github.com/AdhityaRamadhanus/cockpit/pkg/extractors/tableau"
+	"github.com/AdhityaRamadhanus/cockpit/pkg/http"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/keygenerator"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/tableau"
 	"github.com/AdhityaRamadhanus/cockpit/pkg/tableau/sheets"
+	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"go.uber.org/multierr"
 )
@@ -151,7 +154,20 @@ func (t TaskJakarta) SaveJakartaProvincialLevelData() {
 			Ongoing:  ongoingPDP,
 		},
 		InfectedCases: dataMap["Dashboard 2"].(cockpit.InfectedDetails),
+		LastFetchedAt: time.Now(),
 	}
+
+	// fetch lastUpdate workbook
+	now := time.Now().UnixNano()
+	url := fmt.Sprintf("https://public.tableau.com/profile/api/single_workbook/%s?no_cache=%v", t.Tableau.Workbooks[0], now)
+	lastUpdateResp := struct {
+		LastUpdatedMs int64 `json:"lastUpdateDate"`
+	}{}
+	if err := http.GetJSON(url, &lastUpdateResp); err != nil {
+		logTaskError("task-jakarta", errors.Wrapf(err, "Failed to get last update at"))
+	}
+
+	provincialLevelCases.LastUpdatedAt = time.Unix(0, lastUpdateResp.LastUpdatedMs*int64(1000000))
 
 	jsonData, err := json.Marshal(provincialLevelCases)
 	if err != nil {

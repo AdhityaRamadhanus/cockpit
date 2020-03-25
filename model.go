@@ -1,5 +1,7 @@
 package cockpit
 
+import "time"
+
 type MonitoringDetails struct {
 	Total    int `json:"total"`   // ODP
 	Finished int `json:"selesai"` // Selesai ODP
@@ -22,6 +24,8 @@ type ProvincialLevelCases struct {
 	MonitoringCases   MonitoringDetails   `json:"odp"`     // ODP
 	SurveillanceCases SurveillanceDetails `json:"pdp"`     // PDP
 	InfectedCases     InfectedDetails     `json:"positif"` // Positif COVID-19
+	LastUpdatedAt     time.Time           `json:"last_updated_at"`
+	LastFetchedAt     time.Time           `json:"last_fetched_at"`
 }
 
 type Hospital struct {
